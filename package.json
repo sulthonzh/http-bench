@@ -1,0 +1,12 @@
+{
+  "name": "http-bench",
+  "version": "1.0.0",
+  "description": "Simple HTTP benchmarking from the terminal. Hit a URL N times, get timing stats. Zero dependencies.",
+  "bin": { "hb": "./cli.js" },
+  "main": "src/index.js",
+  "scripts": { "test": "node --test tests/index.test.js" },
+  "keywords": ["http", "benchmark", "latency", "cli", "performance"],
+  "license": "MIT",
+  "engines": { "node": ">=18" },
+  "repository": { "type": "git", "url": "git+https://github.com/sulthonzh/http-bench.git" }
+}
