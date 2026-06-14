@@ -43,7 +43,6 @@ async function runBench(url, opts = {}, onProgress) {
   const results = [];
   let completed = 0;
 
-  // Run in batches of concurrency
   for (let i = 0; i < total; i += concurrency) {
     const batch = [];
     for (let j = i; j < Math.min(i + concurrency, total); j++) {
@@ -76,7 +75,7 @@ async function runBench(url, opts = {}, onProgress) {
     stats.p95 = durations[Math.floor(durations.length * 0.95)];
     stats.p99 = durations[Math.min(Math.floor(durations.length * 0.99), durations.length - 1)];
     stats.totalTime = sum;
-    stats.requestsPerSec = durations.length > 0 ? (durations.length / (sum / 1000)) : 0;
+    stats.requestsPerSec = durations.length / (sum / 1000);
     stats.avgBytes = results.filter((r) => !r.error).reduce((a, r) => a + r.bytes, 0) / durations.length;
     const statusCounts = {};
     statuses.forEach((s) => { statusCounts[s] = (statusCounts[s] || 0) + 1; });
@@ -89,9 +88,6 @@ async function runBench(url, opts = {}, onProgress) {
   return { results, stats };
 }
 
-/**
- * Format stats as text.
- */
 function formatText(url, opts, { stats }) {
   const lines = [];
   lines.push(`Benchmark: ${url}`);
@@ -127,16 +123,10 @@ function formatText(url, opts, { stats }) {
   return lines.join("\n");
 }
 
-/**
- * Format as JSON.
- */
 function formatJSON(url, opts, data) {
   return JSON.stringify({ url, options: opts, stats: data.stats }, null, 2);
 }
 
-/**
- * Format as markdown.
- */
 function formatMarkdown(url, opts, { stats }) {
   const lines = [];
   lines.push(`# http-bench: ${url}`);
@@ -166,9 +156,6 @@ function formatMarkdown(url, opts, { stats }) {
   return lines.join("\n");
 }
 
-/**
- * Parse CLI arguments.
- */
 function parseArgs(argv) {
   const args = argv.slice(2);
   const opts = { requests: 10, concurrency: 1, method: "GET", timeout: 10000, format: "text" };
