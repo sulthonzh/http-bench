@@ -1,5 +1,5 @@
 {
-  "name": "http-bench",
+  "name": "@quadbyte/http-bench",
   "version": "1.0.0",
   "description": "Simple HTTP benchmarking from the terminal. Hit a URL N times, get timing stats. Zero dependencies.",
   "bin": {
