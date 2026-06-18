@@ -31,5 +31,9 @@
   "author": "sulthonzh",
   "publishConfig": {
     "access": "public"
+  },
+  "homepage": "https://github.com/sulthonzh/http-bench#readme",
+  "bugs": {
+    "url": "https://github.com/sulthonzh/http-bench/issues"
   }
 }
