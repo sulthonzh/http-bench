@@ -35,5 +35,8 @@
   "homepage": "https://github.com/sulthonzh/http-bench#readme",
   "bugs": {
     "url": "https://github.com/sulthonzh/http-bench/issues"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.31.0"
   }
 }
